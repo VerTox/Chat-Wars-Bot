@@ -406,6 +406,11 @@ def parse_text(text, username, message_id):
             action_list.append(c)
             fwd(pref, msg_receiver, message_id)
 
+            send_msg(pref, msg_receiver, text)
+
+        elif username == bot_username and text.find('📦Материалы для мастерской') != -1:
+            send_msg(pref, msg_receiver, text)
+																						   
     elif username == 'ChatWarsCaptchaBot':
         if len(text) <= 4 and text in captcha_answers.values():
             sleep(3)
@@ -588,6 +593,11 @@ def parse_text(text, username, message_id):
                 write_config()
                 send_msg(pref, msg_receiver, 'Не качаем ничего')
 
+                action_list.append('/stock')
+
+            elif text == "#craft_stock":
+                action_list.append('⚒Крафт')
+					  
             # Получить статус
             elif text == '#status':
                 send_msg(pref, msg_receiver, '\n'.join([
