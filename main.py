@@ -406,6 +406,7 @@ def parse_text(text, username, message_id):
             action_list.append(c)
             fwd(pref, msg_receiver, message_id)
 
+        elif username == bot_username and text.find('📦Содержимое склада') != -1:
             send_msg(pref, msg_receiver, text)
 
         elif username == bot_username and text.find('📦Материалы для мастерской') != -1:
@@ -593,6 +594,7 @@ def parse_text(text, username, message_id):
                 write_config()
                 send_msg(pref, msg_receiver, 'Не качаем ничего')
 
+            elif text == "#stock":
                 action_list.append('/stock')
 
             elif text == "#craft_stock":
